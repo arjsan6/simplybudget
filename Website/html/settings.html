@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../styles/icon.css">
+        <link rel="stylesheet" href="../styles/mdl-color-doc.css" />
+        <link rel="stylesheet" href="../styles/altStyle.css">
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script defer src="../js/material.min.js"></script>
+        <script src="../js/shared.js"></script>
+        <script src="../js/settings.js"></script>
+    <script src="../js/windowFunctions.js"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>Settings</title>
+    </head>
+    <body>
+        <div id="bodyDiv">
+        <div id="viewWindow"> 
+            <div id="boundingBox" class="mdl-layout mdl-js-layout mdl-layout--fixed-header" >
+                <header class="mdl-layout__header mdl-color--white mdl-layout__header--waterfall">
+                  <div class="mdl-layout__header-row mdl-color-text--grey-600"  style="padding-bottom: 5px">
+                    <h4>Settings</h4>
+                  </div>
+                
+                </header>
+                <div class="mdl-layout__drawer">
+                  <span class="mdl-layout-title">SimplyBudget</span>
+                  <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="viewDay.html">Home</a>
+                    <a class="mdl-navigation__link mdl-color-text--accent mdl-color--blue-grey-50" id="inactive" href="settings.html">Settings</a>
+                    <a class="mdl-navigation__link" href="recurringExpenses.html">Add Recurring Expenses</a>
+                    <a class="mdl-navigation__link" href="excel.html">Export to Excel</a>
+                    <a class="mdl-navigation__link inactive" href="">User Login</a>
+                  </nav>
+                </div>
+                <main class="mdl-layout__content">
+                  <div class="page-content">
+                    <div class="card-boxes">
+                        <div class="inner-boxes">
+                        <h6 class="mdl-color-text--accent">Edit Categories:</h6>
+                        <div class="boxTable">
+                        <table class="category mdl-data-table mdl-js-data-table">
+                            <thead></thead>
+                            <tbody id="tableBody">
+                                <tr> 
+                                    <td style="text-align: center;">Clothes</td>
+                                    <td style="text-align: center;"><button class="mdl-button mdl-js-button mdl-button-icon mdl-color-text--red"><i class="material-icons">delete</i></button></td>
+                                </tr>
+                                <tr> 
+                                    <td style="text-align: center;">Clothes</td>
+                                    <td style="text-align: center;"><button class="mdl-button mdl-js-button mdl-button-icon mdl-color-text--red"><i class="material-icons">delete</i></button></td>
+                                </tr>
+                                <tr> 
+                                    <td style="text-align: center;">Clothes</td>
+                                    <td style="text-align: center;"><button class="mdl-button mdl-js-button mdl-button-icon mdl-color-text--red"><i class="material-icons">delete</i></button></td>
+                                </tr>
+                                <tr> 
+                                    <td style="text-align: center;">Clothes</td>
+                                    <td style="text-align: center;"><button class="mdl-button mdl-js-button mdl-button-icon mdl-color-text--red"><i class="material-icons">delete</i></button></td>
+                                </tr>
+                                <tr> 
+                                    <td style="text-align: center;">Clothes</td>
+                                    <td style="text-align: center;"><button class="mdl-button mdl-js-button mdl-button-icon mdl-color-text--red"><i class="material-icons">delete</i></button></td>
+                                </tr>
+                                <tr> 
+                                    <td style="text-align: center;">Clothes</td>
+                                    <td style="text-align: center;"><button class="mdl-button mdl-js-button mdl-button-icon mdl-color-text--red"><i class="material-icons">delete</i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                            
+                        </div>
+                        <span>
+                        <div id="catInputDiv" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin-top: 3px; width: 70%; margin-left: 10%">
+                            <input class="mdl-textfield__input" type="text" id="categoryInput">
+                            <label class="mdl-textfield__label" for="categoryInput">Type to add category...</label>
+                            
+                            </div>
+                        </span>
+                        <span>
+                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" onclick="addCategory()" style="text-transform: none;"><i class="material-icons">add</i></button>
+                        </span>
+
+                    </div>
+                    </div>
+
+                    <div class="card-boxes">
+                        <div class="inner-boxes">
+                            <h6 class="mdl-color-text--accent">Edit Daily Goal:</h6><div id="goalInputDiv" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin-top: 3px; width: 70%; margin-left: 10%">
+                                <input class="mdl-textfield__input" type="number" id="goalInput">
+                                <label class="mdl-textfield__label" for="goalInput">Type to change goal...</label>
+                                
+                                </div>
+                            </span>
+                            <span>
+                                <button onclick="addGoal()" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="text-transform: none;"><i class="material-icons">add</i></button>
+                            </span>
+
+                        </div>
+                    </div>
+
+                    <div class="card-boxes">
+                        <div class="inner-boxes">
+                            <h6 class="mdl-color-text--accent">Reset App:</h6>
+                            <button onclick="clearLocalStorage(); window.location='settings.html';" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--red mdl-color-text--white center-horz" style="margin-bottom: 10px; text-transform: none">Reset</button>
+
+                        </div>
+                    </div>
+
+                
+                <div style="margin-bottom: 30px">
+                </div>
+                
+                    
+                  </div>
+                  
+                
+                </main>
+                
+                
+                
+                
+                </div>
+                
+                
+                
+        </div>
+
+
+    </div>
+    
+    <div id="loadingSpinner" style="display: none" class="mdl-spinner mdl-js-spinner is-active"></div>
+    <div id="overlay-black-loading" style="display: none"></div>
+   
+    </body>
+    
+</html>

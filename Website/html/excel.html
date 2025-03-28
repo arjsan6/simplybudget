@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" href="../styles/icon.css">
+      <link rel="stylesheet" href="../styles/mdl-color-doc.css" />
+      <link rel="stylesheet" href="../styles/altStyle.css">
+      <script src="../js/jquery-3.6.0.min.js"></script>
+        <script defer src="../js/material.min.js"></script>
+        <script src="../js/shared.js"></script>
+        <script src="../js/excel.js"></script>
+    <script src="../js/windowFunctions.js"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>Export to Excel</title>
+        <style>
+          table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 3px;
+          }
+
+          .table-view-box {
+            width: 95%;
+            margin-left: 2.5%;
+            overflow: scroll;
+            border: 2px solid black;
+            margin-bottom: 10px
+          }
+        </style>
+    </head>
+    <body>
+        <div id="bodyDiv">
+        <div id="viewWindow"> 
+            <div id="boundingBox" class="mdl-layout mdl-js-layout mdl-layout--fixed-header" >
+                <header class="mdl-layout__header mdl-color--white mdl-layout__header--waterfall">
+                  <div class="mdl-layout__header-row mdl-color-text--grey-600"  style="padding-bottom: 5px">
+                    <h4>Export to CSV</h4>
+                  </div>
+                
+                </header>
+                <div class="mdl-layout__drawer">
+                  <span class="mdl-layout-title">SimplyBudget</span>
+                  <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="viewDay.html">Home</a>
+                    <a class="mdl-navigation__link" href="settings.html">Settings</a>
+                    <a class="mdl-navigation__link" href="recurringExpenses.html">Add Recurring Expenses</a>
+                    <a class="mdl-navigation__link  mdl-color-text--accent mdl-color--blue-grey-50" id="inactive"  href="excel.html">Export to Excel</a>
+                    <a class="mdl-navigation__link inactive" href="">User Login</a>
+                  </nav>
+                </div>
+                <main class="mdl-layout__content">
+                  <div class="page-content">
+
+                    <div class="card-boxes">
+                        <div class="inner-boxes">
+                            <h6 class="mdl-color-text--accent">Select Timeframe:</h6>
+                            <div style="text-align: center;">
+                                <span id="dateLabel" class="mdl-color-text--grey-600">Start Date: </span>
+                                <input class="" type="date" id="date1" value="2021-12-1">
+                        </div>
+                        <div style="text-align: center; margin-top: 30px">
+                            <span id="dateLabel" class="mdl-color-text--grey-600">End Date: </span>
+                            <input class="" type="date" id="date2" value="2021-12-1">
+                    </div>
+                    <div style="text-align: center; margin-top: 20px;">
+                    <a onclick="renderTable()" class="mdl-color-text--accent">Render Table</a>
+                  </div>
+                    <button onclick="downloadCsv();" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color--accent mdl-color-text--white center-horz" style="margin-bottom: 10px; margin-top: 5px;text-transform: none">Download</button>
+                            
+
+                        </div>
+                    </div>
+                    
+                    <div class="card-boxes">
+                      <div class="inner-boxes">
+                        <h6 class="mdl-color-text--accent">View Data</h6>
+                        <div class="table-view-box">
+                        </div>
+                      </div>
+                    </div>
+                
+                <div style="margin-bottom: 30px">
+                </div>
+                
+                    
+                  </div>
+                  
+                
+                </main>
+                
+                
+                
+                
+                </div>
+                
+                
+                
+        </div>
+
+
+    </div>
+    
+    <div id="loadingSpinner" style="display: none" class="mdl-spinner mdl-js-spinner is-active"></div>
+    <div id="overlay-black-loading" style="display: none"></div>
+   
+    </body>
+    
+</html>

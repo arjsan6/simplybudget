@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../styles/icon.css">
+        <link rel="stylesheet" href="../styles/mdl-color-doc.css" />
+        <link rel="stylesheet" href="../styles/style.css">
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script defer src="../js/material.min.js"></script>
+        <script src="../js/shared.js"></script>
+    <script src="../js/viewDay.js"></script>
+    <script src="../js/windowFunctions.js"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>Add Expenses</title>
+    </head>
+    <body>
+        <div id="bodyDiv">
+        <div id="viewWindow">
+            <div id="boundingBox" class="mdl-layout mdl-js-layout mdl-layout--fixed-header" >
+                <header class="mdl-layout__header mdl-color--white mdl-layout__header--waterfall" style=" box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);">
+                  <div class="mdl-layout__header-row mdl-color-text--grey-600"  style="padding-bottom: 5px">
+                    <table class="dailyBudgetView" style="width: 100%" >
+                        <tr style="font-size: 17px">
+                          <td style="color: black;" id="goalText">$0.00</td>
+                          <td>-</td>
+                          <td style="color: black;" id="spentText">$0.00</td>
+                          <td>=</td>
+                          <td style="color: black" id="remainingText">$0.00</td>
+                        </tr>
+                        <tr style="font-size: 11px">
+                          <td class="makeLink" id="setGoal">(Set Goal)</td>
+                          <td></td>
+                          <td>(Spent)</td>
+                          <td></td>
+                          <td>(Remaining)</td>
+                        </tr>
+                      </table>
+                  </div>
+                
+                  <div class="mdl-color--blue" style="height: 30px; font-size: 13px;">
+                      <table style="width: 100%; text-align: center; margin-top: -4px">
+                      <tr>
+                          <td><button onclick="goPrevDate()" class="mdl-button mdl-js-button mdl-button--icon">
+                          <i class="material-icons" style="font-size: 16px">arrow_back_ios</i>
+                        </button></td>
+                          <td id="displayDate"><input onchange="goSpecDate(event);" class="headerDate mdl-color-text--white mdl-color--blue-300" type="date" id="selectedDate" value="14-05-2021"><span id="dateLabel"> - Today</span></td>
+                          <td><button onclick="goNextDate()" class="mdl-button mdl-js-button mdl-button--icon">
+                          <i class="material-icons" style="font-size: 16px">arrow_forward_ios</i> 
+                        </button></td>
+                
+                        </td>
+                      </table>
+                    </div>
+                </header>
+                <div class="mdl-layout__drawer">
+                  <span class="mdl-layout-title">SimplyBudget</span>
+                  <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link mdl-color-text--accent mdl-color--blue-grey-50" id="inactive" href="viewDay.html">Home</a>
+                    <a class="mdl-navigation__link" href="settings.html">Settings</a>
+                    <a class="mdl-navigation__link" href="recurringExpenses.html">Add Recurring Expenses</a>
+                    <a class="mdl-navigation__link" href="excel.html">Export to Excel</a>
+                    <a class="mdl-navigation__link inactive" href="">User Login</a>
+                  </nav>
+                </div>
+                <main class="mdl-layout__content">
+                  <div class="page-content" id="annexCategories">
+                    
+                    
+                
+                
+                
+                    
+                  </div>
+                  <button style="display: none" id="fab_button" onclick="openPopUp();" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-color--grey-300 mdl-shadow--3dp">
+                      <i class="material-icons">add</i>
+                      </button>
+                  
+                
+                </main>
+                
+                
+                
+                
+                </div>
+                
+                <div id="overlay-add" style="display: none">
+                
+                <button onclick="closePopUp();" class="mdl-button mdl-js-button mdl-button--icon mdl-button--primary" style="left: 7px; top: 7px">
+                <i class="material-icons">cancel</i>
+                </button>
+                
+                <button id="delete-button" class="mdl-button mdl-js-button mdl-js-button-ripple-effect mdl-color-text--accent delete-button" data-upgraded=",MaterialButton">
+                Delete
+                </button>
+                
+                <h4 style="text-align: center;" >Add an expense</h4>
+                    <div id="selectMenu" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label center-horz overlay-inputs">
+                        <select class="mdl-textfield__input" id="category" name="category">
+                          <option></option>
+                          <option value="0">Shopping</option>
+                          <option value="1">Food</option>
+                          <option value="2">Petrol</option>
+                          <option value="3">Eating out</option>
+                          <option value="other">Other</option>
+                        </select>
+                        <label class="mdl-textfield__label" for="category">Select a category</label>
+                        </div>
+                  
+                        <div id="expenseAmountDiv" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label center-horz overlay-inputs">
+                      <input class="mdl-textfield__input" type="number" id="expenseAmount">
+                      <label class="mdl-textfield__label" for="expenseAmount">Expense amount ($)...</label>
+                    </div>
+                    
+                
+                    <div id="reasonDiv" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label center-horz overlay-inputs">
+                  <input class="mdl-textfield__input" type="text" id="reason">
+                  <label class="mdl-textfield__label" for="reason">Reason (optional)...</label>
+                </div>
+                
+                
+                    <button  id="overlay-button" onclick="addExpense();" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent center-horz">Add Expense</button>
+                
+                    
+                </div><div id="overlay-black" style="display: none"></div>
+                <div id="overlay-goal" style="display: none">
+                
+                <button onclick="closeGoalUp();" class="mdl-button mdl-js-button mdl-button--icon mdl-button--primary" style="left: 7px; top: 7px">
+                <i class="material-icons">cancel</i>
+                </button>
+                
+                <h5 style="text-align: center;" >Set Daily Goal</h5>
+                
+                <div id="overlay-input-div" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label center-horz overlay-inputs">
+                <input class="mdl-textfield__input" type="number" id="goalAmount">
+                <label class="mdl-textfield__label" for="goalAmount">Daily Goal ($)...</label>
+                </div>
+                
+                <button id="overlay-button-goal" onclick="editGoal();" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent center-horz">Set Goal</button>
+                
+                </div>
+                
+        </div>
+
+
+    </div>
+    
+    <div id="loadingSpinner" style="display: none" class="mdl-spinner mdl-js-spinner is-active"></div>
+    <div id="overlay-black-loading" style="display: none"></div>
+   
+    </body>
+    
+</html>
